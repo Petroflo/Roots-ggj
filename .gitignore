@@ -1,3 +1,9 @@
-./Graphical_Engine/__pycache__/
-./Game_Engine/__pycache__/
+# Remove all pycache files from Graphical Engine
+Graphical_Engine/__pycache__/
+Graphical_Engine/Elements/__pycache__/
+
+# Remove all pycache files from Game Engine
+Game_Engine/__pycache__/
+
+# Remove all pycache files from the core
 ./__pycache__/
