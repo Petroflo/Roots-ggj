@@ -2,12 +2,6 @@ import pygame, sys, os
 
 pygame.init()
 
-Colors = [
-    {"name": "black", "value": (0, 0, 0)},
-    {"name": "white", "value": (255, 255, 255)},
-    {"name": "red", "value": (255, 0, 0)},
-]
-
 class Window:
     def __init__(self, width, height, title):
         self.size = (width, height)
@@ -36,4 +30,3 @@ class Window:
                         sys.exit()
 
             self.screen.update()
-            
