@@ -1,5 +1,7 @@
-import pygame, sys, os, Graphical_Engine.Colors as Colors
+import pygame, sys, os, Graphical_Engine.Colors as Colors, pyscroll, pytmx
+from pytmx import load_pygame
 import Graphical_Engine.Elements.Element as Element
+
 
 pygame.init()
 
@@ -11,10 +13,17 @@ class Window:
         self.title = title,
         self.scale = (1, 1)
         self.running = True
-        self.screen = pygame.display.set_mode(self.size)
+        self.screen = pygame.display.set_mode(self.size, pygame.RESIZABLE)
         self.elements = []
     
-    
+        tmx_data = pytmx.util_pygame.load_pygame(f"./assets/maps/world.tmx")
+
+        self.map_data = pyscroll.data.TiledMapData(tmx_data)
+        self.map_layer = pyscroll.orthographic.BufferedRenderer(self.map_data, self.screen.get_size())
+        self.map_layer.zoom = 2
+        self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=2)
+        #selfgroup.add(self.player)
+
     def add_element(self, element):
         self.elements.append(element)
         
@@ -24,6 +33,9 @@ class Window:
     def launch(self):
         print("Launching window...")
         while self.running:
+            self.group.draw(self.screen)
+            pygame.display.flip()
+
             for event in pygame.event.get():
                 if (event.type == pygame.QUIT): # If the user clicks the close button or presses escape
                     self.running = False
@@ -49,7 +61,7 @@ class Window:
                         self.running = False
                         pygame.quit()
                         sys.exit()
-            for el in self.elements:
-                if (el.active):
-                    el.draw()
+            # for el in self.elements:
+            #     if (el.active):
+            #         el.draw()
             pygame.display.flip()
