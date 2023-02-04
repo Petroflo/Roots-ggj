@@ -30,6 +30,7 @@ class Window:
         if key[pygame.K_ESCAPE]:
             print("Closing window...")
             pygame.quit()
+            self.running = False
             sys.exit()
         self.player.key_pressed(key)
         
@@ -38,6 +39,7 @@ class Window:
             if (event.type == pygame.QUIT):
                 print("Closing window...")
                 pygame.quit()
+                self.running = False
                 sys.exit()
             elif event.type == pygame.VIDEORESIZE:
                 print("Resizing window...")
@@ -50,11 +52,13 @@ class Window:
                 self.player.key_released(event)
 
     def launch(self):
+        clock = pygame.time.Clock()
         while self.running:
             self.get_event()
-            self.player.move(self.moving)
+            self.player.move()
             self.Map.center(self.player.rect.center)
             self.Map.update(self.screen)
             self.Map.draw(self.screen)
+            clock.tick(30)
             pygame.display.flip()
         
