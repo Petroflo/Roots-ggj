@@ -7,7 +7,7 @@ from pytmx import load_pygame
 import pyscroll
 
 from Graphical_Engine.Map import Map
-from Graphical_Engine.Sprite import Player
+from Graphical_Engine.Player import Player
 
 pygame.init()
 
@@ -24,20 +24,6 @@ class Window:
         self.player = Player(os.path.join("assets", "sprites", "player.png"), player_position.x, player_position.y)
     
         self.Map.add_sprite(self.player)
-        
-        self.moving = [0, 0]
-
-    def player_key_event(self, key):
-        if key[pygame.K_SPACE]:
-            self.player.run()
-        if key[pygame.K_UP]:
-            self.moving[1] = -.1
-        if key[pygame.K_DOWN]:
-            self.moving[1] = .1
-        if key[pygame.K_LEFT]:
-            self.moving[0] = -.1
-        if key[pygame.K_RIGHT]:
-            self.moving[0] = .1
 
     def execute_key_event(self):
         key = pygame.key.get_pressed()
@@ -45,7 +31,7 @@ class Window:
             print("Closing window...")
             pygame.quit()
             sys.exit()
-        self.player_key_event(key)
+        self.player.key_pressed(key)
         
     def get_event(self):
         for event in pygame.event.get():
@@ -61,12 +47,7 @@ class Window:
             elif event.type == pygame.KEYDOWN:
                 self.execute_key_event()
             elif event.type == pygame.KEYUP:
-                if (event.key == pygame.K_UP or event.key == pygame.K_DOWN):
-                    self.moving[1] = 0
-                if (event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT):
-                    self.moving[0] = 0
-                if (event.key == pygame.K_SPACE):
-                    self.player.speed = 1
+                self.player.key_released(event)
 
     def launch(self):
         while self.running:

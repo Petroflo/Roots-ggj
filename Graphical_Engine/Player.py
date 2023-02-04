@@ -14,11 +14,37 @@ class Player(pygame.sprite.Sprite):
         self.position = [x, y]
         self.speed = 1
         self.running = False
+        self.moving = [0, 0]
+
+
+    def key_pressed(self, key):
+        if key[pygame.K_SPACE]:
+            self.run()
+        if key[pygame.K_UP]:
+            self.moving[1] = -.1
+        if key[pygame.K_DOWN]:
+            self.moving[1] = .1
+        if key[pygame.K_LEFT]:
+            self.moving[0] = -.1
+        if key[pygame.K_RIGHT]:
+            self.moving[0] = .1
+            
+    def key_released(self, key):
+        if (event.key == pygame.K_UP or event.key == pygame.K_DOWN):
+            self.moving[1] = 0
+        if (event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT):
+            self.moving[0] = 0
+        if (event.key == pygame.K_SPACE):
+            self.player.walk()
 
     # moving = [x, y]
     def move(self, moving):
         self.position[0] += (moving[0] * self.speed)
         self.position[1] += (moving[1] * self.speed)
+        
+    def walk(self):
+        self.running = False
+        self.speed = 1
         
     def run(self):
         self.running = True
