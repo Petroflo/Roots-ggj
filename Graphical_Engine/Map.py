@@ -12,6 +12,10 @@ class Map():
         self.map_layer = pyscroll.orthographic.BufferedRenderer(self.map_data, size)
         self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=5)
         self.map_layer.zoom = 2
+        self.walls = []
+        for obj in self.tmx_data.objects:
+            if obj.type == "collision":
+                self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
     
     def reload(self, file_to_load):
         self.tmx_data = load_pygame(file_to_load)
@@ -21,6 +25,9 @@ class Map():
         self.map_layer.zoom = 2
     
     
+    def get_walls(self):
+        return self.walls
+
     def center(self, point):
         self.map_layer.center(point)
     
