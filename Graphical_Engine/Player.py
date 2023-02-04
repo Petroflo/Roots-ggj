@@ -24,6 +24,8 @@ class Player(pygame.sprite.Sprite):
         self.image = self.get_image(self.walk, self.looks["down"])
         self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
+        
+        self.feet = pygame.Rect(self.rect.x, self.rect.y + self.rect.height, self.rect.width, 1)
     
     def stay(self):
         self.walk = 1
@@ -81,7 +83,17 @@ class Player(pygame.sprite.Sprite):
             self.moving[0] = 0
 
     # moving = [x, y]
-    def move(self):
+    
+    
+    def check_collision(self, future_x, future_y, walls):
+        future_feet = pygame.Rect(future_x, future_y + self.rect.height, self.rect.width, 1)
+        if (future_feet.collidelist(walls) != -1):
+            return True
+        return False
+
+    def move(self, walls):
+        if (self.check_collision(self.position[0] + (self.moving[0] * self.speed), self.position[1] + (self.moving[1] * self.speed), walls) == True):
+            return
         self.position[0] += (self.moving[0] * self.speed)
         self.position[1] += (self.moving[1] * self.speed)
         if (self.moving[0] != 0 or self.moving[1] != 0):

@@ -57,7 +57,7 @@ class Window:
         pygame.key.set_repeat(1, 1)
         while self.running:
             self.get_event()
-            self.player.move()
+            self.player.move(self.Map.get_walls())
             self.Map.center(self.player.rect.center)
             self.Map.update(self.screen)
             self.Map.draw(self.screen)
