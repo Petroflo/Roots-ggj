@@ -17,7 +17,7 @@ class Window:
         self.running = True
         self.width = 600
         self.height = 800
-        self.title = title,
+        self.title = title
         self.screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
         file_to_load = os.path.join("assets", "maps", "basic_map", "world.tmx")
         self.Map = Map(file_to_load, (800, 600))
@@ -62,7 +62,6 @@ class Window:
     def launch(self):
         clock = pygame.time.Clock()
         pygame.key.set_repeat()
-        font = pygame.font.SysFont("Arial", 20)
         while self.running:
             self.get_event()
             self.player.move(self.Map.get_walls())
@@ -70,7 +69,6 @@ class Window:
             self.Map.update(self.screen)
             self.Map.draw(self.screen)
             self.dialog_box.render(self.screen)
-            self.dialog_box.blit_text(self.screen, "Il y a longtemps, les hommes se sont réunis pour savoir vers qui se tourner. Un homme Balur s'est proposé pour les guider, d'autres voulaient la guerre, d'autres voulaient des lois. Quel choix aurions-nous dû faire ?", (20, 20), font)
-            clock.tick(60)
+            clock.tick(55)
             pygame.display.flip()
         
