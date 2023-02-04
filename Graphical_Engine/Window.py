@@ -24,15 +24,16 @@ class Window:
         self.player = Player(os.path.join("assets", "sprites", "player.png"), player_position.x, player_position.y)
     
         self.Map.add_sprite(self.player)
+        self.key = None
 
     def execute_key_event(self):
-        key = pygame.key.get_pressed()
-        if key[pygame.K_ESCAPE]:
+        self.key = pygame.key.get_pressed()
+        if self.key[pygame.K_ESCAPE]:
             print("Closing window...")
-            pygame.quit()
+            pygame.quit() 
             self.running = False
             sys.exit()
-        self.player.key_pressed(key)
+        self.player.key_pressed(self.key)
         
     def get_event(self):
         for event in pygame.event.get():
@@ -53,12 +54,13 @@ class Window:
 
     def launch(self):
         clock = pygame.time.Clock()
+        pygame.key.set_repeat(1, 1)
         while self.running:
             self.get_event()
             self.player.move()
             self.Map.center(self.player.rect.center)
             self.Map.update(self.screen)
             self.Map.draw(self.screen)
-            clock.tick(30)
+            clock.tick(60)
             pygame.display.flip()
         
