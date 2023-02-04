@@ -5,6 +5,7 @@ import Graphical_Engine.Colors as Colors
 
 from pytmx import load_pygame
 import pyscroll
+from Graphical_Engine.Dialog import DialogBox
 
 from Graphical_Engine.Map import Map
 from Graphical_Engine.Player import Player
@@ -17,13 +18,14 @@ class Window:
         self.width = 600
         self.height = 800
         self.title = title,
-        self.screen = pygame.display.set_mode((800, 600))
+        self.screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
         file_to_load = os.path.join("assets", "maps", "basic_map", "world.tmx")
         self.Map = Map(file_to_load, (800, 600))
         player_position = self.Map.return_object("player_1")
         self.player = Player(os.path.join("assets", "sprites", "player.png"), player_position.x, player_position.y)
     
         self.Map.add_sprite(self.player)
+        self.dialog_box = DialogBox()
         self.key = None
 
     def execute_key_event(self):
@@ -33,6 +35,9 @@ class Window:
             pygame.quit() 
             self.running = False
             sys.exit()
+        elif self.key[pygame.K_BACKSPACE]:
+            print("Backspace pressed")
+            self.dialog_box.start_dialog()
         self.player.key_pressed(self.key)
         
     def get_event(self):
@@ -42,6 +47,7 @@ class Window:
                 pygame.quit()
                 self.running = False
                 sys.exit()
+
             elif event.type == pygame.VIDEORESIZE:
                 print("Resizing window...")
                 self.size = (event.w, event.h)
@@ -52,6 +58,7 @@ class Window:
             elif event.type == pygame.KEYUP:
                 self.player.key_released(event)
 
+
     def launch(self):
         clock = pygame.time.Clock()
         pygame.key.set_repeat(1, 1)
@@ -61,6 +68,7 @@ class Window:
             self.Map.center(self.player.rect.center)
             self.Map.update(self.screen)
             self.Map.draw(self.screen)
+            self.dialog_box.render(self.screen)
             clock.tick(60)
             pygame.display.flip()
         
