@@ -1,55 +1,72 @@
-import pygame, sys, os, Graphical_Engine.Colors as Colors
-import Graphical_Engine.Elements.Element as Element
+import pygame
+import sys
+import os 
+import Graphical_Engine.Colors as Colors
+
+from pytmx import load_pygame
+import pyscroll
+
+from Graphical_Engine.Map import Map
+from Graphical_Engine.Sprite import Player
 
 pygame.init()
 
 class Window:
-    def __init__(self, width, height, title):
-        self.size = (width, height)
-        self.width = width
-        self.height = height
-        self.title = title,
-        self.scale = (1, 1)
+    def __init__(self, title):
         self.running = True
-        self.screen = pygame.display.set_mode(self.size)
-        self.elements = []
+        self.width = 600
+        self.height = 800
+        self.title = title,
+        self.screen = pygame.display.set_mode((800, 600))
+        file_to_load = os.path.join("assets", "maps", "basic_map", "world.tmx")
+        self.Map = Map(file_to_load, (800, 600))
+        player_position = self.Map.return_object("player_1")
+        self.player = Player(os.path.join("assets", "sprites", "player.png"), player_position.x, player_position.y)
     
-    
-    def add_element(self, element):
-        self.elements.append(element)
+        self.Map.add_sprite(self.player)
         
-    def remove_element(self, element):
-        self.elements.remove(element)
+        self.moving = [0, 0]
+
+    def player_key_event(self, key):
+        if key[pygame.K_UP]:
+            self.moving[1] = -.1
+        if key[pygame.K_DOWN]:
+            self.moving[1] = .1
+        if key[pygame.K_LEFT]:
+            self.moving[0] = -.1
+        if key[pygame.K_RIGHT]:
+            self.moving[0] = .1
+
+    def execute_key_event(self):
+        key = pygame.key.get_pressed()
+        if key[pygame.K_ESCAPE]:
+            print("Closing window...")
+            pygame.quit()
+            sys.exit()
+        self.player_key_event(key)
+        
+    def get_event(self):
+        for event in pygame.event.get():
+            if (event.type == pygame.QUIT):
+                print("Closing window...")
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.VIDEORESIZE:
+                print("Resizing window...")
+                self.size = (event.w, event.h)
+                self.width = event.w
+                self.height = event.h
+            elif event.type == pygame.KEYDOWN:
+                self.execute_key_event()
+            elif event.type == pygame.KEYUP:
+                self.moving = [0, 0]
 
     def launch(self):
-        print("Launching window...")
         while self.running:
-            for event in pygame.event.get():
-                if (event.type == pygame.QUIT): # If the user clicks the close button or presses escape
-                    self.running = False
-                    pygame.quit()
-                    sys.exit()
-                pygame.mouse.set_visible(True)
-                if pygame.mouse.get_pressed()[0]:
-                    print("Clicked")
-                    print(pygame.mouse.get_pos())
-                # event related to resizing the window
-                if event.type == pygame.VIDEORESIZE:
-                    print("Resizing window...")
-                    # print new window size
-                    print(event.w, event.h)
-                    self.scale = (event.w / self.width, event.h / self.height)
-                    self.size = (event.w, event.h)
-                    self.width = event.w
-                    self.height = event.h
-                    for el in self.elements:
-                        el.rescale(self.scale)
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        self.running = False
-                        pygame.quit()
-                        sys.exit()
-            for el in self.elements:
-                if (el.active):
-                    el.draw()
+            self.get_event()
+            self.player.move(self.moving)
+            self.Map.center(self.player.rect.center)
+            self.Map.update(self.screen)
+            self.Map.draw(self.screen)
             pygame.display.flip()
+        
