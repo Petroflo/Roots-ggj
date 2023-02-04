@@ -62,6 +62,7 @@ class Window:
     def launch(self):
         clock = pygame.time.Clock()
         pygame.key.set_repeat()
+        font = pygame.font.SysFont("Arial", 20)
         while self.running:
             self.get_event()
             self.player.move(self.Map.get_walls())
@@ -69,6 +70,7 @@ class Window:
             self.Map.update(self.screen)
             self.Map.draw(self.screen)
             self.dialog_box.render(self.screen)
+            self.dialog_box.blit_text(self.screen, "Il y a longtemps, les hommes se sont réunis pour savoir vers qui se tourner. Un homme Balur s'est proposé pour les guider, d'autres voulaient la guerre, d'autres voulaient des lois. Quel choix aurions-nous dû faire ?", (20, 20), font)
             clock.tick(60)
             pygame.display.flip()
         
