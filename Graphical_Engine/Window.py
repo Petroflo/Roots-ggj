@@ -28,6 +28,8 @@ class Window:
         self.moving = [0, 0]
 
     def player_key_event(self, key):
+        if key[pygame.K_SPACE]:
+            self.player.run()
         if key[pygame.K_UP]:
             self.moving[1] = -.1
         if key[pygame.K_DOWN]:
@@ -59,7 +61,12 @@ class Window:
             elif event.type == pygame.KEYDOWN:
                 self.execute_key_event()
             elif event.type == pygame.KEYUP:
-                self.moving = [0, 0]
+                if (event.key == pygame.K_UP or event.key == pygame.K_DOWN):
+                    self.moving[1] = 0
+                if (event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT):
+                    self.moving[0] = 0
+                if (event.key == pygame.K_SPACE):
+                    self.player.speed = 1
 
     def launch(self):
         while self.running:

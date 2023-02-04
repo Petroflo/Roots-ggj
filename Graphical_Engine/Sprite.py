@@ -12,11 +12,17 @@ class Player(pygame.sprite.Sprite):
         print("self.image: " + str(self.image))
         self.rect = self.image.get_rect()
         self.position = [x, y]
-    
+        self.speed = 1
+        self.running = False
+
     # moving = [x, y]
     def move(self, moving):
-        self.position[0] += moving[0]
-        self.position[1] += moving[1]
+        self.position[0] += (moving[0] * self.speed)
+        self.position[1] += (moving[1] * self.speed)
+        
+    def run(self):
+        self.running = True
+        self.speed = 3
          
     def update(self, screen):
         self.rect.x = self.position[0]
