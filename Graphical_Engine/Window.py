@@ -61,7 +61,7 @@ class Window:
 
     def launch(self):
         clock = pygame.time.Clock()
-        pygame.key.set_repeat(1, 1)
+        pygame.key.set_repeat()
         while self.running:
             self.get_event()
             self.player.move(self.Map.get_walls())
