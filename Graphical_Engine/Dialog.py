@@ -9,12 +9,11 @@ class DialogBox:
 
     def __init__(self):
         self.box = pygame.image.load(os.path.join("assets", "dialogs", "dialog_box.png"))
-        self.box = pygame.transform.scale(self.box, (700, 130))
         self.texts = ["Hello World!", "Il y a longtemps, les hommes se sont réunis pour savoir quelque chose sur qu'elqu'un de trés misterieux. Un homme Balur s'est proposé pour les guider, d'autres voulaient la guerre, d'autres voulaient des lois.", "Quel choix aurions-nous dû faire ?"]
         self.text_index = 0
         self.letter_index = 0
         #self.font = pygame.font.Font("assets/fonts/Qlassy.ttf", 20)
-        self.font = pygame.font.SysFont("TimesNewRoman", 20)
+        self.font = pygame.font.SysFont("TimesNewRoman", 28)
         self.reading = False
 
     def start_dialog(self):
@@ -26,7 +25,7 @@ class DialogBox:
 
     def render(self, screen):
         clock = pygame.time.Clock()
-
+        self.box = pygame.transform.scale(self.box, (screen.get_height() * .8, screen.get_width() * .4))
         if self.reading:
             self.letter_index += 1
                 
