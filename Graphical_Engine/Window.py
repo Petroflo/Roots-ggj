@@ -69,6 +69,6 @@ class Window:
             self.Map.update(self.screen)
             self.Map.draw(self.screen)
             self.dialog_box.render(self.screen)
-            clock.tick(55)
+            clock.tick(60)
             pygame.display.flip()
         
