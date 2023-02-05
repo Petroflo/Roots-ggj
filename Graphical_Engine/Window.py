@@ -18,46 +18,36 @@ class Window:
         self.width = 600
         self.height = 800
         self.title = title
-        self.screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
-        file_to_load = os.path.join("assets", "maps", "basic_map", "world.tmx")
-        self.Map = Map(file_to_load, (800, 600))
-        player_position = self.Map.return_object("player_1")
-        self.player = Player(os.path.join("assets", "sprites", "player.png"), player_position.x, player_position.y)
-    
-        self.Map.add_sprite(self.player)
+        self.screen = pygame.display.set_mode((800, 600))
+        self.Map = Map(os.path.join("assets", "maps", "basic_map", "world.tmx"), (800, 600))
         self.dialog_box = DialogBox()
         self.key = None
+        self.player = None
+        self.create_player()
+
+    def create_player(self):
+        player_position = self.Map.return_object("player_1")
+        self.player = Player(os.path.join("assets", "sprites", "player.png"), player_position.x, player_position.y)
+        self.Map.add_sprite(self.player)
 
     def execute_key_event(self):
         self.key = pygame.key.get_pressed()
-        if self.key[pygame.K_ESCAPE]:
-            print("Closing window...")
-            pygame.quit() 
-            self.running = False
-            sys.exit()
-        elif self.key[pygame.K_BACKSPACE]:
+        if self.key[pygame.K_BACKSPACE]:
             print("Backspace pressed")
             self.dialog_box.start_dialog()
         self.player.key_pressed(self.key)
+        # key liés au jeu (m pour afficher l'arbre des décisions prises)
         
     def get_event(self):
         for event in pygame.event.get():
             if (event.type == pygame.QUIT):
                 print("Closing window...")
-                pygame.quit()
                 self.running = False
-                sys.exit()
-
-            elif event.type == pygame.VIDEORESIZE:
-                print("Resizing window...")
-                self.size = (event.w, event.h)
-                self.width = event.w
-                self.height = event.h
+                print(self.running)
             elif event.type == pygame.KEYDOWN:
                 self.execute_key_event()
             elif event.type == pygame.KEYUP:
                 self.player.key_released(event)
-
 
     def launch(self):
         clock = pygame.time.Clock()
@@ -71,4 +61,6 @@ class Window:
             self.dialog_box.render(self.screen)
             clock.tick(60)
             pygame.display.flip()
+        pygame.quit()
+        sys.exit()
         

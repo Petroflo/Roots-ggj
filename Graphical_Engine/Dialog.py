@@ -13,7 +13,7 @@ class DialogBox:
         self.text_index = 0
         self.letter_index = 0
         #self.font = pygame.font.Font("assets/fonts/Qlassy.ttf", 20)
-        self.font = pygame.font.SysFont("TimesNewRoman", 28)
+        self.font = pygame.font.SysFont("TimesNewRoman", 25)
         self.reading = False
 
     def start_dialog(self):
@@ -25,7 +25,7 @@ class DialogBox:
 
     def render(self, screen):
         clock = pygame.time.Clock()
-        self.box = pygame.transform.scale(self.box, (screen.get_height() * .8, screen.get_width() * .4))
+        self.box = pygame.transform.scale(self.box, (screen.get_width() * 0.8, screen.get_height() * 0.2))
         if self.reading:
             self.letter_index += 1
                 
@@ -40,10 +40,13 @@ class DialogBox:
             words = [word.split(' ') for word in text.split()]  # 2D array where each row is a list of words.
             space = self.font.size(' ')[0]  # The width of a space.
             max_width, max_height = self.box.get_size()
+            x, y = pos           
+            space = self.font.size(' ')[0]  # The width of a space.
+            max_width, max_height = self.box.get_size()
             x, y = pos
             for line in words:
                 for word in line:
-                    word_surface = self.font.render(word[0:self.letter_index], False, (0, 0, 0))
+                    word_surface = self.font.render(word, False, (0, 0, 0))
                     word_width, word_height = word_surface.get_size()
                     if x + word_width >= max_width:
                         x = pos[0]  # Reset the x.
