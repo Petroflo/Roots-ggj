@@ -115,6 +115,28 @@ Death : List[Choice] = [
         "Je ne suis pas loin, juste de l'autre côté du chemin."])
 ]
 
+GoodBad : List[Choice] = [
+    Choice("Le transformer en vampire", +1, [
+        "Le vampire est un être qui a été transformé par la magie, il est donc un être humain.",
+        "Il doit s'adapter à sa nouvelle vie de sang et de chair humaine, il ne peut pas être un être humain.",
+        "Les risques sont trop grand, il ne peut pas sortir dehors, il ne peut pas vivre normalement.",
+        "Sa famille et ses amis le croient mort, vous êtes le seul à savoir qu'il est un vampire",
+        "En tant que vampire, il peut vivre éternellement, il peut vous aider à vaincre le mal."]),
+    Choice("Le laisser mourir", +3, [
+        "Sa famille et ses amis savent qu'il est mort dans vos bras",
+        "Des rumeurs disent que c'est vous qui l'avez tué",
+        "Le doute vous ronge, vous ne savez pas si vous avez fait le bon choix",
+        "Vous n'avez pas d'autre choix que de fuir le village",
+        "De là-haut, votre ami veille sur votre voyage"]),
+    Choice("Ne rien faire", -2, [
+        "Vous enterrez votre ami en ne sachant pas s'il est mort ou vivant",
+        "Les heures passent et rien ne se passe jusqu'à qu'un grondement émerge du sol",
+        "Une âme flotte devant vous, elle vous suit peu importe où vous allez",
+        "Vous n'avez plus d'intimité, vous vous sentez observé",
+        "La fuite est votre seule solution, votre ami vous suivra-t-il ?"])
+]
+
+
 
 Themes = [
     Theme("Qui croire ?",
@@ -131,5 +153,8 @@ Themes = [
         Love),
     Theme("La mort",
         "La vie, la mort... La frontière est mince. La mort est un mystère, mais elle est aussi une réalité. Que devrions nous faire ?",
-        Death)
+        Death),
+    Theme("Une amitié à toute épreuve",
+        "Au cours de votre vie, vous avez dû faire des choix difficiles. Un ami chère est sur le point de mourir. Vous pouvez le laisser mourir, le transformer en vampire ou laisser son âme errer éternellement. Que devrions nous faire ?",
+        GoodBad)
 ]
