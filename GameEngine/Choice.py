@@ -136,7 +136,46 @@ GoodBad : List[Choice] = [
         "La fuite est votre seule solution, votre ami vous suivra-t-il ?"])
 ]
 
+Swear : List[Choice] = [
+    Choice("Vous sauvez vos amis", +1, [
+        "Les amis c'est pour la vie, ils ne vous laisseront jamais tombé",
+        "Votre famille s'en remettra. Ou peut-être pas...",
+        "Les prochains mois seront difficiles car votre famille est en danger",
+        "Arriverez-vous à les sauver ?",
+        "Serez-vous assez fort pour les protéger ?"]),
+    Choice("Vous abandonnez vos amis", -1, [
+        "Votre famille est saine et sauve",
+        "Vous perdez vos amis, mais vous pouvez toujours en faire de nouveaux",
+        "Avez-vous trouver de nouveaux amis depuis ?",
+        "Je l'espère pour vous !"]),
+    Choice("Vous ne faites rien", -2, [
+        "Vous ne faites rien, vous ne savez pas quoi faire",
+        "Vos amis meurent et ne bougez pas",
+        "Pendant que vous regardez, votre famille se fait tuer",
+        "Vous vous retrouvez tout seul, sans amis, sans famille",
+        "Vous êtes seul au monde"])
+]
 
+Son_Daughter : List[Choice] = [
+    Choice("Vous sauvez votre fille", +1, [
+        "Vous avez sauvé votre fille, vous êtes un bon père",
+        "Votre fille vous remercie, elle vous aime",
+        "Pendant que vous la maintenez, vous entendez un bruit",
+        "Vous vous retournez et votre fils est en train de couler",
+        "Un enfant sur deux, c'est déjà ça..."]),
+    Choice("Vous sauvez votre fils", +1, [
+        "Vous avez sauvé votre fils, vous êtes un bon père",
+        "Votre fils vous remercie, il vous aime",
+        "Pendant que vous le maintenez, vous entendez un bruit",
+        "Vous vous retournez et votre fille est en train de couler",
+        "Un enfant sur deux, c'est déjà ça..."]),
+    Choice("Vous ne faites rien", -2, [
+        "Vous ne faites rien, vous ne savez pas quoi faire",
+        "Votre fils meurt et ne bougez pas",
+        "Pendant que vous regardez, votre fille se fait tuer",
+        "Vous vous retrouvez tout seul, sans enfant",
+        "Vous êtes seul au monde"])
+]
 
 Themes = [
     Theme("Qui croire ?",
@@ -156,5 +195,12 @@ Themes = [
         Death),
     Theme("Une amitié à toute épreuve",
         "Au cours de votre vie, vous avez dû faire des choix difficiles. Un ami chère est sur le point de mourir. Vous pouvez le laisser mourir, le transformer en vampire ou laisser son âme errer éternellement. Que devrions nous faire ?",
-        GoodBad)
+        GoodBad),
+    Theme("Les serments",
+        "Les serments sont des promesses que l'on fait à quelqu'un. Ils sont sacrés et doivent être respectés. Vous détenez la clé pour libérer vos amis, mais vous mettez en danger votre famille. Qui choisir ?",
+        Swear),
+    Theme("Le fils ou la fille",
+        "Lors d'une sortie en mer, vous subissez une tempête. Votre bateau est détruit, mais vous arrivez à trouver une plance. Il y a deux places, une pour vous et une pour ?",
+        Son_Daughter)
+        
 ]
