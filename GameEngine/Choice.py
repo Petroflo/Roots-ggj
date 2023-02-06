@@ -177,6 +177,46 @@ Son_Daughter : List[Choice] = [
         "Vous êtes seul au monde"])
 ]
 
+Hero : List[Choice] = [
+    Choice("Vous vous attribuez la gloire", -2, [
+        "Vous êtes le héros, vous avez sauvé le monde",
+        "Il faut un exemple à suivre pour les jeunes soldats",
+        "Tout le monde vous suivra dans les prochaines batailles",
+        "Vous êtes le meilleur, mais vos anciens camarades savent la vérité",
+        "Vous menez maintenant l'unique armée du pays"]),
+    Choice("Vous dites que c'est grâce à votre équipe", +1, [
+        "Toute votre équipe a participé à la victoire",
+        "Vous êtes tous des héros, vous avez sauvé le monde",
+        "Vous êtes grâcieusement récomponsé pour votre implication",
+        "Chaque soldat dirige maintenant une armée"
+        "Vous avez la plus grande armée du pays"]),
+    Choice("Vous avouez que ce n'est pas vous", +3, [
+        "Vous avez soutenu votre capitaine jusqu'au bout",
+        "Grâce à lui vous êtes un héros et tous vos camarades aussi",
+        "Vous êtes vénérez par tout le pays",
+        "Vous prenez des vacances bien méritées",
+        "Vous vous mariez avec la fille du capitaine"])
+]
+
+Red_Blue : List[Choice] = [
+    Choice("Un précipice mortel", -2, [
+        "Vous tombez dans le précipice",
+        "Vous arrivez à vous accrocher à un rocher",
+        "Vous vous retrouvez coincé, vous ne pouvez pas avancer",
+        "Vous êtes en train de mourir de faim",
+        "Mais on vous retrouve après 3 jours, vous êtes sauvé"]),
+    Choice("Une rivière à courant rapide", +1, [
+        "Vous traversez la rivière",
+        "Vous arrivez à vous accrocher à un rocher",
+        "Mais vous lâchez prise et vous coulez",
+        "Heureusement vous atterissez dans un bassin luxuriant",
+        "Vous êtes sauvé"]),
+    Choice("Un assassin", -10, [
+        "Vous êtes assassiné"])
+
+
+
+
 Themes = [
     Theme("Qui croire ?",
         "Il y a longtemps, les hommes se sont réunis pour savoir vers qui se tourner. Un homme Balur s'est proposé pour les guider, d'autres voulaient la guerre, d'autres voulaient des lois. Quel choix aurions-nous dû faire ?",
@@ -202,5 +242,10 @@ Themes = [
     Theme("Le fils ou la fille",
         "Lors d'une sortie en mer, vous subissez une tempête. Votre bateau est détruit, mais vous arrivez à trouver une plance. Il y a deux places, une pour vous et une pour ?",
         Son_Daughter)
-        
+    Theme("Hero ou Zero",
+        "En tant que sous-capitaine, vous avez aider le capitaine dans sa bataille. Malheureusement il est mort. On vous récompense pour vos exploits.",
+        Hero),
+    Theme("Pillule rouge ou pillule bleue",
+        "Vous êtes maintenant face à la porte du destin. Trois portes sont devant vous. Laquelle ouvrez-vous ?",
+        Red_Blue)
 ]
