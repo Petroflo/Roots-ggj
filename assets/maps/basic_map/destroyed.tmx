@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="153">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="153">
  <editorsettings>
   <export target="basic.tmx" format="tmx"/>
  </editorsettings>
- <tileset firstgid="1" source="../../../../../delivery_2/WS/EPITECH-JAM-3_2022/map/nature.tsx"/>
- <tileset firstgid="721" source="../../../../../delivery_2/WS/EPITECH-JAM-3_2022/map/house.tsx"/>
+ <tileset firstgid="1" source="nature.tsx"/>
+ <tileset firstgid="721" source="house.tsx"/>
  <tileset firstgid="1496" name="destroyed" tilewidth="16" tileheight="16" tilecount="1053" columns="39">
   <image source="../../map_assets/destroyed.png" trans="ffffff" width="624" height="440"/>
  </tileset>
@@ -291,52 +291,52 @@
 </data>
  </layer>
  <objectgroup id="5" name="Objects">
-  <object id="2" name="wall left" type="collision" x="-0.666667" y="0" width="32.6667" height="800"/>
-  <object id="3" name="wall right" type="collision" x="768" y="0" width="32" height="800"/>
-  <object id="5" name="wall up" type="collision" x="32" y="0" width="736" height="32"/>
-  <object id="6" name="wall down" type="collision" x="32" y="768" width="736" height="32"/>
+  <object id="2" name="wall left" class="collision" x="-0.666667" y="0" width="32.6667" height="800"/>
+  <object id="3" name="wall right" class="collision" x="768" y="0" width="32" height="800"/>
+  <object id="5" name="wall up" class="collision" x="32" y="0" width="736" height="32"/>
+  <object id="6" name="wall down" class="collision" x="32" y="768" width="736" height="32"/>
   <object id="11" name="player_1" x="429.455" y="462">
    <point/>
   </object>
-  <object id="12" name="lava left" type="collision" x="112" y="720" width="208" height="48"/>
-  <object id="13" name="lava left" type="collision" x="129.333" y="704.667" width="175.333" height="14.6667"/>
-  <object id="14" name="lava left" type="collision" x="144.667" y="688" width="144" height="16.6667"/>
-  <object id="15" name="lava left" type="collision" x="192" y="671.333" width="64" height="16"/>
-  <object id="16" name="lava left" type="collision" x="96.6667" y="736" width="16" height="31.3333"/>
-  <object id="20" name="lava right" type="collision" x="640" y="720" width="64" height="16"/>
-  <object id="21" name="lava right" type="collision" x="688.667" y="656.667" width="16" height="64"/>
-  <object id="22" name="lava right" type="collision" x="656" y="704" width="32" height="16"/>
-  <object id="23" name="lava right" type="collision" x="672" y="688" width="16" height="16"/>
-  <object id="24" name="lava up" type="collision" x="560" y="32" width="208" height="96"/>
-  <object id="25" name="lava up" type="collision" x="416" y="32" width="144" height="32"/>
-  <object id="26" name="lava up" type="collision" x="464" y="64" width="96" height="16"/>
-  <object id="27" name="lava up" type="collision" x="496" y="80" width="64" height="16"/>
-  <object id="28" name="lava up" type="collision" x="528" y="96" width="32" height="16"/>
-  <object id="29" name="lava up" type="collision" x="736" y="128" width="32" height="112"/>
-  <object id="30" name="lava up" type="collision" x="592" y="128" width="144" height="16"/>
-  <object id="32" name="lava up" type="collision" x="624" y="144" width="48" height="16"/>
-  <object id="33" name="lava up" type="collision" x="656" y="160" width="16" height="16"/>
-  <object id="35" name="collision3" type="collision" x="43" y="467.333" width="94.3333" height="33.3333"/>
-  <object id="36" name="collision5" type="collision" x="139.167" y="243.75" width="94.3333" height="33.3333"/>
-  <object id="37" name="collision2" type="collision" x="431" y="325" width="69.3333" height="31.6667"/>
-  <object id="38" name="collision1" type="collision" x="175.318" y="101.409" width="69.3333" height="31.6667"/>
-  <object id="39" name="collision4" type="collision" x="543.333" y="629" width="69.3333" height="31.6667"/>
+  <object id="12" name="lava left" class="collision" x="112" y="720" width="208" height="48"/>
+  <object id="13" name="lava left" class="collision" x="129.333" y="704.667" width="175.333" height="14.6667"/>
+  <object id="14" name="lava left" class="collision" x="144.667" y="688" width="144" height="16.6667"/>
+  <object id="15" name="lava left" class="collision" x="192" y="671.333" width="64" height="16"/>
+  <object id="16" name="lava left" class="collision" x="96.6667" y="736" width="16" height="31.3333"/>
+  <object id="20" name="lava right" class="collision" x="640" y="720" width="64" height="16"/>
+  <object id="21" name="lava right" class="collision" x="688.667" y="656.667" width="16" height="64"/>
+  <object id="22" name="lava right" class="collision" x="656" y="704" width="32" height="16"/>
+  <object id="23" name="lava right" class="collision" x="672" y="688" width="16" height="16"/>
+  <object id="24" name="lava up" class="collision" x="560" y="32" width="208" height="96"/>
+  <object id="25" name="lava up" class="collision" x="416" y="32" width="144" height="32"/>
+  <object id="26" name="lava up" class="collision" x="464" y="64" width="96" height="16"/>
+  <object id="27" name="lava up" class="collision" x="496" y="80" width="64" height="16"/>
+  <object id="28" name="lava up" class="collision" x="528" y="96" width="32" height="16"/>
+  <object id="29" name="lava up" class="collision" x="736" y="128" width="32" height="112"/>
+  <object id="30" name="lava up" class="collision" x="592" y="128" width="144" height="16"/>
+  <object id="32" name="lava up" class="collision" x="624" y="144" width="48" height="16"/>
+  <object id="33" name="lava up" class="collision" x="656" y="160" width="16" height="16"/>
+  <object id="35" name="collision3" class="collision" x="43" y="467.333" width="94.3333" height="33.3333"/>
+  <object id="36" name="collision5" class="collision" x="139.167" y="243.75" width="94.3333" height="33.3333"/>
+  <object id="37" name="collision2" class="collision" x="431" y="325" width="69.3333" height="31.6667"/>
+  <object id="38" name="collision1" class="collision" x="175.318" y="101.409" width="69.3333" height="31.6667"/>
+  <object id="39" name="collision4" class="collision" x="543.333" y="629" width="69.3333" height="31.6667"/>
   <object id="40" name="enter_house_2" x="442.545" y="335.637" width="15.8182" height="23.4545"/>
   <object id="41" name="exit_house_2" x="440.909" y="372.364">
    <point/>
   </object>
-  <object id="46" name="rock" type="collision" x="278.364" y="651.191" width="18.0886" height="15.0739"/>
-  <object id="47" name="rock" type="collision" x="195.96" y="618.028" width="22.1083" height="18.0886"/>
-  <object id="48" name="rock" type="collision" x="149.734" y="650.186" width="19.0936" height="16.0788"/>
-  <object id="55" type="collision" x="421.183" y="150.672" width="19.0724" height="19.7082"/>
-  <object id="60" type="collision" x="627.166" y="172.923" width="25.7478" height="10.172"/>
-  <object id="61" type="collision" x="562.637" y="156.712" width="26.3835" height="9.8541"/>
-  <object id="62" type="collision" x="515.91" y="124.607" width="23.5227" height="9.53622"/>
-  <object id="64" type="collision" x="276.233" y="122.064" width="21.6154" height="17.4831"/>
-  <object id="65" type="collision" x="309.291" y="201.532" width="20.0261" height="17.4831"/>
-  <object id="72" type="collision" x="652.595" y="643.059" width="9.53622" height="24.1584"/>
-  <object id="73" type="collision" x="652.913" y="610.636" width="10.172" height="25.4299"/>
-  <object id="74" type="collision" x="740.647" y="587.431" width="24.4763" height="11.1256"/>
+  <object id="46" name="rock" class="collision" x="278.364" y="651.191" width="18.0886" height="15.0739"/>
+  <object id="47" name="rock" class="collision" x="195.96" y="618.028" width="22.1083" height="18.0886"/>
+  <object id="48" name="rock" class="collision" x="149.734" y="650.186" width="19.0936" height="16.0788"/>
+  <object id="55" class="collision" x="421.183" y="150.672" width="19.0724" height="19.7082"/>
+  <object id="60" class="collision" x="627.166" y="172.923" width="25.7478" height="10.172"/>
+  <object id="61" class="collision" x="562.637" y="156.712" width="26.3835" height="9.8541"/>
+  <object id="62" class="collision" x="515.91" y="124.607" width="23.5227" height="9.53622"/>
+  <object id="64" class="collision" x="276.233" y="122.064" width="21.6154" height="17.4831"/>
+  <object id="65" class="collision" x="309.291" y="201.532" width="20.0261" height="17.4831"/>
+  <object id="72" class="collision" x="652.595" y="643.059" width="9.53622" height="24.1584"/>
+  <object id="73" class="collision" x="652.913" y="610.636" width="10.172" height="25.4299"/>
+  <object id="74" class="collision" x="740.647" y="587.431" width="24.4763" height="11.1256"/>
   <object id="114" name="tree" x="372" y="101.333" width="8" height="38.6667"/>
   <object id="115" name="tree" x="484.667" y="92" width="8" height="31.3333"/>
   <object id="116" name="tree" x="289.333" y="41.3333">
