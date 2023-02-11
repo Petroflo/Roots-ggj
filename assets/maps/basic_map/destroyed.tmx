@@ -6,19 +6,19 @@
  <tileset firstgid="1" source="../../../../../delivery_2/WS/EPITECH-JAM-3_2022/map/nature.tsx"/>
  <tileset firstgid="721" source="../../../../../delivery_2/WS/EPITECH-JAM-3_2022/map/house.tsx"/>
  <tileset firstgid="1496" name="destroyed" tilewidth="16" tileheight="16" tilecount="1053" columns="39">
-  <image source="../../../../../destroyed.png" trans="ffffff" width="624" height="440"/>
+  <image source="../../map_assets/destroyed.png" trans="ffffff" width="624" height="440"/>
  </tileset>
  <tileset firstgid="2549" name="lava" tilewidth="16" tileheight="16" tilecount="1024" columns="32">
-  <image source="../../../../../lava.png" trans="ffffff" width="512" height="512"/>
+  <image source="../../map_assets/lava.png" trans="ffffff" width="512" height="512"/>
  </tileset>
  <tileset firstgid="3573" name="hellheaven" tilewidth="16" tileheight="16" tilecount="2304" columns="48">
-  <image source="../../../../../hellheaven.jpg" trans="ffffff" width="768" height="768"/>
+  <image source="../../map_assets/hellheaven.jpg" trans="ffffff" width="768" height="768"/>
  </tileset>
  <tileset firstgid="5877" name="waterfire" tilewidth="16" tileheight="16" tilecount="768" columns="32">
-  <image source="../../../../../waterfire.png" trans="ffffff" width="512" height="384"/>
+  <image source="../../map_assets/waterfire.png" trans="ffffff" width="512" height="384"/>
  </tileset>
  <tileset firstgid="6645" name="trees" tilewidth="16" tileheight="16" tilecount="384" columns="24">
-  <image source="../../../../../trees.png" trans="ffffff" width="384" height="256"/>
+  <image source="../../map_assets/trees.png" trans="ffffff" width="384" height="256"/>
  </tileset>
  <layer id="1" name="background" width="50" height="50">
   <data encoding="csv">
